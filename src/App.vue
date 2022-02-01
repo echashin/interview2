@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>TO DO:</h1>
-    <todo-list :todos="list" />
+    <todo-list :todos="list" @toggle="toggleComplete" />
   </div>
 </template>
 
 <script>
 import todoList from "@/components/TodoList";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -15,6 +15,9 @@ export default {
     todoList,
   },
   methods: {
+    ...mapMutations({
+      toggleComplete: "todo/toggleComplete",
+    }),
     ...mapActions({
       fetchTodos: "todo/fetchTodos",
     }),
@@ -47,9 +50,9 @@ body {
   position: relative;
 
   background: linear-gradient(
-    135deg,
-    rgba(65, 184, 131, 0.9),
-    rgba(52, 73, 94, 0.9)
+      135deg,
+      rgba(65, 184, 131, 0.9),
+      rgba(52, 73, 94, 0.9)
   );
 
   font-size: 1.5em;

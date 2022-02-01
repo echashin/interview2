@@ -1,6 +1,6 @@
 <template>
   <div v-if="todos.length > 0">
-    <todo-item v-for="todo in todos" :todo="todo" :key="todo.id" />
+    <todo-item v-for="todo in todos" :todo="todo" :key="todo.id" @toggle="$emit('toggle', todo.id)" />
   </div>
 </template>
 

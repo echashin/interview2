@@ -2,7 +2,7 @@
   <div class="todo">
     <input type="text" :value="todo.title" :class="{ green: todo.completed }" />
     <span v-if="todo.completed" class="tick">✓</span>
-    <button class="toggle">Toggle completed</button>
+    <button  @click="$emit('toggle', todo.id)" class="toggle">Toggle completed</button>
   </div>
 </template>
 
